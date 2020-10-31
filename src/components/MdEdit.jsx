@@ -4,12 +4,10 @@ import { onChange } from '../moduels/edit';
 import { useSelector, useDispatch } from 'react-redux';
 
 const Editor = styled.textarea`
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   background: #0876ad;
-  flex: 1;
-
   font-size: 1.25rem;
-
   outline: none;
   border: none;
 `;
