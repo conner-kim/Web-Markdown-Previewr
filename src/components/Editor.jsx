@@ -4,15 +4,15 @@ import MdEditContainer from '../container/MdEditContainer';
 import TitleContainer from '../container/TitleContainer';
 
 const EditorBlock = styled.div`
-  height: 100%;
-
   flex: 1;
+  display: flex;
+  flex-direction: column;
 `;
 
 function Editor() {
   return (
     <EditorBlock>
-      <TitleContainer />;
+      <TitleContainer />
       <MdEditContainer />
     </EditorBlock>
   );

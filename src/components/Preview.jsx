@@ -4,9 +4,8 @@ import styled from 'styled-components';
 import { useSelector, useDispatch } from 'react-redux';
 
 const PreviewBlock = styled.div`
-  height: 100%;
   flex: 1;
-  padding: 10px;
+  padding: 1rem 2rem;
 
   h1,
   h2,
