@@ -2,6 +2,8 @@ import React from 'react';
 import marked from 'marked';
 import styled from 'styled-components';
 import { useSelector, useDispatch } from 'react-redux';
+import hljs from 'highlight.js';
+import javascript from 'highlight.js/lib/languages/javascript';
 
 const PreviewBlock = styled.div`
   flex: 1;
@@ -47,10 +49,16 @@ function createMarkup(text) {
 }
 
 function Preview() {
-  const text = useSelector((state) => state.edit.text);
-  const mdParser = marked(text);
+  const { text, title } = useSelector((state) => state.edit);
+  const createTitle = `# ${title} \n`;
+  const previewHtml = createTitle + text;
+  marked.setOptions({
+    hilight: (code) => hljs.highlightAuto(code, javascript).value,
+  });
 
-  return <PreviewBlock dangerouslySetInnerHTML={createMarkup(marked(text))} />;
+  return (
+    <PreviewBlock dangerouslySetInnerHTML={createMarkup(marked(previewHtml))} />
+  );
 }
 
 export default Preview;

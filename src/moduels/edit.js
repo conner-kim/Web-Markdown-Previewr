@@ -10,7 +10,7 @@ const CHANGE_TITLE = 'edit/CHANGE_TITLE';
 export const onChange = (dispatch, target) => {
   const text = target.value;
 
-  dispatch({ type: CHANGE_TEXT, text });
+  dispatch({ type: CHANGE_TEXT, text: text });
 };
 export const onChangeTitle = (dispatch, target) => {
   const title = target.value;
@@ -27,7 +27,7 @@ export default function edit(state = initialState, action) {
     case CHANGE_TITLE:
       return {
         ...state,
-        title: action.text,
+        title: action.title,
       };
     default:
       return state;

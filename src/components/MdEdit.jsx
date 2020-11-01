@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import { onChange } from '../moduels/edit';
-import { useSelector, useDispatch } from 'react-redux';
 
 const Editor = styled.textarea`
   background: #0876ad;
@@ -15,10 +14,7 @@ const Editor = styled.textarea`
   flex: 1;
 `;
 
-function MdEdit() {
-  const text = useSelector((state) => state.edit.text);
-  const dispatch = useDispatch();
-
+function MdEdit({ text, dispatch }) {
   return <Editor onChange={(e) => onChange(dispatch, e.target)} value={text} />;
 }
 

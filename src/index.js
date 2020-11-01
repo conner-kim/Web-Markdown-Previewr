@@ -6,12 +6,13 @@ import App from './App';
 import { createStore, combineReducers } from 'redux';
 import { Provider } from 'react-redux';
 import edit from './moduels/edit';
+import { composeWithDevTools } from 'redux-devtools-extension';
 
 const rootReducer = combineReducers({
   edit,
 });
 
-const store = createStore(rootReducer /* preloadState ? */);
+const store = createStore(rootReducer, composeWithDevTools());
 
 ReactDOM.render(
   <Provider store={store}>
