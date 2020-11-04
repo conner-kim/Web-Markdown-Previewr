@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import TitleContainer from '../container/TitleContainer';
+import EditorPane from './EditorPane';
 
 const EditorBlock = styled.div`
   flex: 1;
@@ -12,6 +13,7 @@ function Editor() {
   return (
     <EditorBlock>
       <TitleContainer />
+      <EditorPane />
     </EditorBlock>
   );
 }
