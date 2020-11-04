@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import MdEditContainer from '../container/MdEditContainer';
 import TitleContainer from '../container/TitleContainer';
 
 const EditorBlock = styled.div`
@@ -13,7 +12,6 @@ function Editor() {
   return (
     <EditorBlock>
       <TitleContainer />
-      <MdEditContainer />
     </EditorBlock>
   );
 }
