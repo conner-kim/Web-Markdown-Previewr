@@ -1,7 +1,7 @@
 import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import {useSelector, useDispatch} from 'react-redux';
 import Title from '../components/Title';
-import { onChangeTitle } from '../moduels/edit';
+import {onChangeTitle} from '../moduels/edit';
 
 function TitleContainer() {
   const title = useSelector((state) => state.edit.title);

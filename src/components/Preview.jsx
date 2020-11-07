@@ -1,15 +1,16 @@
 import React from 'react';
 import marked from 'marked';
 import styled from 'styled-components';
-import {useSelector, useDispatch} from 'react-redux';
+import {useSelector} from 'react-redux';
 import hljs from 'highlight.js';
 import javascript from 'highlight.js/lib/languages/javascript';
 
 const PreviewBlock = styled.div`
+  width: ${(props) => `${props.width}px`};
   flex: 1;
-  padding: 1rem 2rem;
+  padding-left: 1rem;
   word-wrap: break-word;
-
+  box-sizing: border-box;
   h1,
   h2,
   h3,
@@ -59,16 +60,18 @@ function createMarkup(text) {
   return {__html: text};
 }
 
-function Preview() {
+function Preview({width}) {
   const {text, title} = useSelector((state) => state.edit);
   const createTitle = `# ${title} \n`;
   const previewHtml = createTitle + text;
+
   marked.setOptions({
     hilight: (code) => hljs.highlightAuto(code, javascript).value,
   });
 
   return (
     <PreviewBlock
+      width={width}
       dangerouslySetInnerHTML={createMarkup(
         marked(previewHtml, {
           breaks: true,

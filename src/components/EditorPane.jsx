@@ -1,5 +1,6 @@
 import React, {useEffect, useRef, useState} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
+import styled from 'styled-components';
 
 import CodeMirror from 'codemirror';
 import 'codemirror/lib/codemirror.css';
@@ -11,7 +12,13 @@ import 'codemirror/addon/display/placeholder';
 
 import './EditorPane.css';
 
-function EditorPane() {
+const PaneBlock = styled.div`
+  width: ${(props) => `${props.width}px`};
+  height: 100%;
+  flex: 1;
+`;
+
+function EditorPane({width}) {
   const text = useSelector((state) => state.edit.text);
   const dispatch = useDispatch();
   const textareaRef = useRef();
@@ -29,14 +36,15 @@ function EditorPane() {
     codeMirror.setValue(text);
 
     // width값에 약 35px정도 더 들어가게 됨 scroll ??
-    // codeMirror.setSize(800);
     codeMirror.on('change', (doc) => {
       dispatch({type: 'edit/CHANGE_TEXT', text: doc.getValue()});
     });
   }, []);
 
   return (
-    <textarea ref={textareaRef} placeholder="글을 입력해주세요."></textarea>
+    <PaneBlock width={width}>
+      <textarea ref={textareaRef} placeholder="글을 입력해주세요."></textarea>
+    </PaneBlock>
   );
 }
 

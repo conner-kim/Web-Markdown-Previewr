@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import styled from 'styled-components';
 import TitleContainer from '../container/TitleContainer';
 import EditorPane from './EditorPane';
@@ -9,11 +9,11 @@ const EditorBlock = styled.div`
   flex-direction: column;
 `;
 
-function Editor() {
+function Editor({width}) {
   return (
     <EditorBlock>
       <TitleContainer />
-      <EditorPane />
+      <EditorPane width={width} />
     </EditorBlock>
   );
 }
