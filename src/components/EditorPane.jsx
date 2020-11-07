@@ -16,6 +16,10 @@ const PaneBlock = styled.div`
   width: ${(props) => `${props.width}px`};
   height: 100%;
   flex: 1;
+
+  @media screen and (max-width: 768px) {
+    width: 100%;
+  }
 `;
 
 function EditorPane({width}) {

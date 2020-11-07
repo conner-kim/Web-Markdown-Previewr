@@ -5,21 +5,20 @@ import Preview from './components/Preview';
 
 function App() {
   const [width, setWidth] = useState(0);
+  const visibleValue = 768 / 2 - 80 - 12;
 
   useEffect(() => {
     const getWidth = (window.innerWidth - 80 - 12) / 2;
-    console.log(getWidth);
-
     setWidth(getWidth);
-    console.log(width);
+    window.addEventListener('resize', () => {
+      setWidth((window.innerWidth - 80 - 12) / 2);
+    });
   }, []);
-
-  console.log(width);
 
   return (
     <div className="container">
       <Editor width={width} />
-      <Preview width={width} />
+      {width > visibleValue && <Preview width={width} />}
     </div>
   );
 }

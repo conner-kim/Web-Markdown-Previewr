@@ -11,6 +11,7 @@ const PreviewBlock = styled.div`
   padding-left: 1rem;
   word-wrap: break-word;
   box-sizing: border-box;
+
   h1,
   h2,
   h3,
