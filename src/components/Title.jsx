@@ -21,12 +21,12 @@ const TitleInput = styled.input`
 const UnderLine = styled.div`
   width: 4rem;
   height: 0.5rem;
-  background: #845ef7;
+  background: #b197fc;
   margin-top: 1rem;
   margin-bottom: 20px;
 `;
 
-function Title({ title, onChangeTitle }) {
+function Title({title, onChangeTitle}) {
   return (
     <>
       <TitleInput

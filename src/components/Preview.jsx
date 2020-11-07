@@ -1,13 +1,14 @@
 import React from 'react';
 import marked from 'marked';
 import styled from 'styled-components';
-import { useSelector, useDispatch } from 'react-redux';
+import {useSelector, useDispatch} from 'react-redux';
 import hljs from 'highlight.js';
 import javascript from 'highlight.js/lib/languages/javascript';
 
 const PreviewBlock = styled.div`
   flex: 1;
   padding: 1rem 2rem;
+  word-wrap: break-word;
 
   h1,
   h2,
@@ -34,22 +35,32 @@ const PreviewBlock = styled.div`
     margin: 1rem 0 1rem 0;
   }
 
+  a {
+    color: #5f3dc4;
+  }
+
+  a,
+  a:visited,
+  a:active {
+    text-decoration: none;
+  }
+
   blockquote {
     border: 1px solid #27a9e3;
-    padding: 20px;
+    padding: 0.6rem;
     margin: 20px 0;
-    font-size: 1.25rem;
+    font-style: italic;
+    font-size: 1.2rem;
     border: none;
-    border-left: 0.5rem solid #27a9e3;
-    background: #fefef4;
+    border-left: 0.5rem solid #b197fc;
   }
 `;
 function createMarkup(text) {
-  return { __html: text };
+  return {__html: text};
 }
 
 function Preview() {
-  const { text, title } = useSelector((state) => state.edit);
+  const {text, title} = useSelector((state) => state.edit);
   const createTitle = `# ${title} \n`;
   const previewHtml = createTitle + text;
   marked.setOptions({
@@ -57,7 +68,13 @@ function Preview() {
   });
 
   return (
-    <PreviewBlock dangerouslySetInnerHTML={createMarkup(marked(previewHtml))} />
+    <PreviewBlock
+      dangerouslySetInnerHTML={createMarkup(
+        marked(previewHtml, {
+          breaks: true,
+        })
+      )}
+    />
   );
 }
 
